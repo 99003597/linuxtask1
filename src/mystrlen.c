@@ -31,7 +31,7 @@ int  mystrcmp(const char *str1, const char *str2)
 {
 	int r;
 	
-	r=strcmp(str1,str2);hgh
+	r=strcmp(str1,str2);
 	
 	return r;
 }
