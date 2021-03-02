@@ -5,10 +5,9 @@
 
 size_t mystrlen(const char* st)
 {
-char* p=st;
 int i;
 
-for (i = 0; p[i] != '\0'; ++i);
+for (i = 0; st[i] != '\0'; ++i);
 
 return i;
 
