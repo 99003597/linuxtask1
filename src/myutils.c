@@ -5,23 +5,23 @@ int factorial(unsigned int x)
 {
 	
 	if (x>=1)
-        return x*multiplyNumbers(x-1);
+        return x*factorial(x-1);
     else
         return 1;
 	
 }
-int isPrime(int p)
+int isPrime(int a)
 {
-	
-	   for ( p = 2 ; p <= a - 1 ; p++ )
-   { 
+   int p;
+   for ( p = 2 ; p <= a - 1 ; p++ )
+   {
       if ( a%p == 0 )
      return 0;
    }
    return 1;
 	
 }
-int isPalindrome(char *str)
+int isPalindrome(int str)
 {
 	
 	{

@@ -1,10 +1,12 @@
 #include <stdio.h>
+#include <math.h>
+#include <string.h>
 #include "mystring.h"
 
-
-size_t mystrlen(const char *str)
+size_t mystrlen(const char* st)
 {
-char *p=str
+char* p=st;
+int i;
 
 for (i = 0; p[i] != '\0'; ++i);
 
@@ -13,6 +15,7 @@ return i;
 }
 char *mystrcpy(char *str1, char *str2)
 {
+	int i;
 	char *p1=str1;
 	char *p2=str2;
 	 for (i = 0; p1[i] != '\0'; ++i) 
@@ -21,7 +24,7 @@ char *mystrcpy(char *str1, char *str2)
     }
 return p2;
 }
-char  *mystrcat(char *str1, const char *str2)
+char  *mystrcat(char *str1, char *str2)
 {
     strcat(str1,str2);
     return str1;
