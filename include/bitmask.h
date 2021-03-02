@@ -6,5 +6,5 @@ int reset();
 int flip();
 int query();
 
-
+cc
 #endif
