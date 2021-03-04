@@ -1,7 +1,7 @@
 INC = -I../inc
 
 
-Build: src/mystrlen.c src/bitmask.c src/myutils.c
+Build: mystrlen.c bitmask.c myutils.c
 	gcc $(INC) $^ -o $@
 
 
