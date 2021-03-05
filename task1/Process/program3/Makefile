@@ -1,14 +1,5 @@
-PROJECT_NAME = a
+Build : main.c 
+	gcc main.c 
 
-SRC = \
-main.c \
-mul.c \
-testt.c \
-
-
-
-$(PROJECT_NAME).out: $(SRC)
-	gcc $^ -o $@ 
-
-run: $(PROJECT_NAME).out
-	./$^
+run : Build
+	./a.out
