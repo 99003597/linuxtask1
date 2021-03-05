@@ -1,0 +1,8 @@
+
+Command 's.out' not found, did you mean:
+
+  command 'scout' from deb openafs-client (1.8.4~pre1-1ubuntu2.1)
+  command 'spout' from deb spout (1.4-4)
+
+Try: sudo apt install <deb name>
+

@@ -1,10 +1,10 @@
 #include <stdio.h>
-int main() 
+int main1() 
 {
-  int a, b, c;
+  int a, b, x;
   a = 80;
   b = 4;
-  c = a/b;
-  printf("product=%d\n",c);
+  x = a-b;
+  printf("subtract = %d\n",x);
   return 0;
 }

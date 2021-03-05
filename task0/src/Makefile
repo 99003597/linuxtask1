@@ -1,17 +1,13 @@
-INC = -I../inc
+CFLAGS = -I../inc
 
+libstr: mystrl.o	
+	ar rc libmystring.a $^
 
-Build: mystrlen.c bitmask.c myutils.c
-	gcc $(INC) $^ -o $@
+libutil: myutils.o	
+	ar rc libmyutils.a $^
 
+libbitmask: bitmask.o 
+	ar rc libbitmask.a $^
 
-run:Build
-	./a.out
-
-libraries:
-	make libmystring -c src
-	make libmyutils -c src
-	make libbitmask -c src
-
-clean:
-	rm *.o *.out
+clean:	
+	rm -rf *.o *.a	

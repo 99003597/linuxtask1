@@ -1,37 +1,37 @@
 #include <stdio.h>
 #include "bitmask.h"
 
-int set()
+int set(int x , int y)
 {
 	
-	
+	return (x | (1 << (y - 1)));
 	
 	
 	
 	
 }
-int reset()
+int reset(int x , int y)
 {
 	
 	
-	
+	return (x & (~(1 << (y - 1))));
 	
 	
 	
 }
-int flip()
+int flip(int x , int y)
 {
 	
 	
-	
+	return (x ^ (1 << (y - 1)));
 	
 	
 }
-int query()
+int query(int x , int y)
 {
 	
 	
-	
+	 return (x & (1 << (y-1)));
 	
 	
 	

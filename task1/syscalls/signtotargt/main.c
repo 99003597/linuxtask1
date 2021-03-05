@@ -26,7 +26,7 @@ void sigint()
   
 void sigquit() 
 { 
-    printf("Quit the program\n"); 
+    printf("I have been finished\n"); 
     exit(0); 
 } 
 

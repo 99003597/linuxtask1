@@ -1,7 +1,0 @@
-Build: mystrlen.c mystring.c myutilmystrlen.c mystring.c myutils.c
-.c
-	gcc test.c sum.c sqr.c
-
-
-run:Build
-	./a.out

@@ -2,6 +2,7 @@
 #include<stdio.h>
 #include<string.h>
 #include<sys/wait.h>
+#include <stdlib.h>
 
 int main()
 {
