@@ -6,7 +6,7 @@
 #define maxlen 100
 int main()
 {
-	int s[2], nbytes_r, nbytes_w;
+	int s[2], r_nbytes, w_nbytes;
 	
     //open the two files
     s[0] = open("abcd.txt",O_RDONLY);
@@ -27,8 +27,8 @@ int main()
 
        while(s[0]!=EOF)
         {
-    nbytes_r = read(s[0],buf,maxlen);
-    nbytes_w = write(s[1], buf, nbytes_r);
+    r_nbytes = read(s[0],buf,maxlen);
+    w_nbytes = write(s[1], buf, r_nbytes);
     }
     
     // while not EOF
@@ -38,18 +38,18 @@ int main()
 
 
     //checks for errors and exit
-	if(nbytes_r<0)
+	if(r_nbytes<0)
 	{
 		perror("read");
 		exit(2);
 	}
-    if(nbytes_w<0)
+    if(w_nbytes<0)
 	{
 		perror("write");
 		exit(3);
 	}
    
-    printf("written successfully, nbytes_w = %d\n",nbytes_w);
+    printf("written successfully, w_nbytes = %d\n",w_nbytes);
     
 	close(s[0]);
     close(s[1]);

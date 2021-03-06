@@ -3,15 +3,15 @@
 
 int main()
 {
-    FILE * file;
-    int space;
-    char path[100];
+    f * f;
+    int s;
+    char p[100];
     char ch;
     int character, word, line;
-    //printf("Enter source file path: ");
-    //scanf("%s", path);
-    file = fopen("nd.txt", "r");
-   if (file == NULL)
+    //printf("Enter source f p: ");
+    //scanf("%s", p);
+    f = fopen("nd.txt", "r");
+   if (f == NULL)
     {
         printf("\nUnable to open file.\n");
         printf("Please check if file exists and you have read privilege.\n");
@@ -20,7 +20,7 @@ int main()
     }
 
     character = word = line = 0;
-    while ((ch = fgetc(file)) != EOF)
+    while ((ch = fgetc(f)) != EOF)
     {
         character++;
 
@@ -34,15 +34,15 @@ int main()
 
 
         if(ch == ' ')
-                space++;
+                s++;
     }
     
     printf("\n");
     printf("Total characters = %d\n", character);
     printf("Total lines      = %d\n", line);
- printf("Total spaces = %d\n", space);
+ printf("Total space = %d\n", s);
    
-    fclose(file);
+    fclose(f);
 
     return 0;
 }

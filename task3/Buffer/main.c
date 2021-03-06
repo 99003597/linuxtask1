@@ -4,72 +4,72 @@
 #include <stdlib.h>
 #include <pthread.h>
 # define MAX 8
-sem_t empty;
-sem_t full;
+sem_t em;
+sem_t f;
 int circular_queue[MAX];
-int head = -1;
-int tail = -1;
+int h = -1;
+int t = -1;
 void insert(int item);
 void delete();
 void* produced(void* pp)
 { 
    int item;
-   sem_wait(&empty);
+   sem_wait(&em);
    //printf("Enter the item\n");
    scanf("%d",&item);
    insert(item);
    printf("\n");
-   sem_post(&full);
+   sem_post(&f);
 }
 void* consumed(void* pp)
 {
- sem_wait(&full);
+ sem_wait(&f);
   delete();
-   sem_post(&empty);
+   sem_post(&em);
 }
 
 void insert(int item)
 {
-if((head == 0 && tail == MAX-1) || (head == tail+1))
+if((h == 0 && t == MAX-1) || (h == t+1))
 {
 printf("Queue Overflow n");
 return;
 }
-if(head == -1)
+if(h == -1)
 {
-head = 0;
-tail = 0;
+h = 0;
+t = 0;
 }
 else
 {
-if(tail == MAX-1)
-tail = 0;
+if(t == MAX-1)
+t = 0;
 else
-tail = tail+1;
+t = t+1;
 }
-circular_queue[tail] = item ;
+circular_queue[t] = item ;
 printf("element that are Produced : %d\n",item);
 }
 
 void delete()
 {
-if(head == -1)
+if(h == -1)
 {
 printf("Queue Underflown");
 return ;
 }
-printf("element that are Consumed : %d\n",circular_queue[head]);
-if(head == tail)
+printf("element that are Consumed : %d\n",circular_queue[h]);
+if(h == t)
 {
-head = -1;
-tail=-1;
+h = -1;
+t=-1;
 }
 else
 {
-if(head == MAX-1)
-head = 0;
+if(h == MAX-1)
+h = 0;
 else
-head = head+1;
+h = h+1;
 }
 }
 
@@ -77,8 +77,8 @@ head = head+1;
 int main()
 {
   int item;
-   sem_init(&empty,0,MAX);
-    sem_init(&full,0,0);
+   sem_init(&em,0,MAX);
+    sem_init(&f,0,0);
     pthread_t pro[8],con[8];
    printf("Please enter the items to be produced and consumed :\n ");
    for(int i = 0; i < 8; i++) {
@@ -93,7 +93,7 @@ int main()
     for(int i = 0; i < 8; i++) {
         pthread_join(con[i], NULL);
     }
-       sem_destroy(&empty);
-    sem_destroy(&full);
+       sem_destroy(&em);
+    sem_destroy(&f);
 return 0;
 }

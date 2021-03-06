@@ -7,8 +7,8 @@
 int main()
 {
     pid_t ret;
-    int status;
-    int execute;
+    int s;
+    int ex;
     int p;
 
     ret=fork();
@@ -20,11 +20,11 @@ int main()
     if(ret == 0)
     {
                                    
-        execute = execl("/usr/bin/gcc","gcc","-c","file.c",NULL); 
+        ex = execl("/usr/bin/gcc","gcc","-c","file.c",NULL); 
 	execl("/bin/gcc","gcc","file.o","-o",p,NULL); 
 
                             
-        if(execute<0)
+        if(ex<0)
         {
             perror("execv");
             exit(2);
@@ -34,9 +34,9 @@ int main()
     }
     else
     {
-        waitpid(-1,&status,0); 
-        printf("parent--child exit status=%d\n",
-			WEXITSTATUS(status));
+        waitpid(-1,&s,0); 
+        printf("parent--child exit s=%d\n",
+			WEXITSTATUS(s));
 		
     }
     return 0;

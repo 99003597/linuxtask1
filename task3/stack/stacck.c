@@ -2,17 +2,17 @@
 #include<semaphore.h>
 #include<stdio.h>
 
-int max_stack = 8;       
-int stack_operation[8];     
-int top = -1;  
+int m_stac = 8;       
+int s_oper[8];     
+int t = -1;  
 
 int peek() {
-    return stack_operation[top];
+    return s_oper[t];
     }
 
 int emptyStack() {
 
-   if(top == -1)
+   if(t == -1)
       return 1;
    else
       return 0;
@@ -20,7 +20,7 @@ int emptyStack() {
    
 int fullStack() {
 
-   if(top == max_stack)
+   if(t == m_stac)
       return 1;
    else
       return 0;
@@ -33,8 +33,8 @@ int pop() {
    int data;
 	
    if(!emptyStack()) {
-      data = stack_operation[top];
-      top = top - 1;   
+      data = s_oper[t];
+      t = t - 1;   
       return data;
    } else {
       printf("Abheee!!! Stack is empty.\n");
@@ -44,8 +44,8 @@ int pop() {
 int push(int data) {
 
    if(!fullStack()) {
-      top = top + 1;   
-      stack_operation[top] = data;
+      t = t + 1;   
+      s_oper[t] = data;
    } else {
       printf("Arrreee yaaaar, Stack is full.\n");
    }
@@ -96,7 +96,7 @@ int main()
 	pthread_create(&pt2,NULL,PopFunc,NULL);
 	pthread_join(pt1,NULL);
 	pthread_join(pt2,NULL);
-	printf("Top of the Stack is %d\n" ,peek());
+	printf("t of the Stack is %d\n" ,peek());
 	printf("Is it Full stack: %s\n" , fullStack()?"Yes":"No");
    	printf("Is it    Empty stack: %s\n" , emptyStack()?"Yes":"No");
 	sem_destroy(&s1);

@@ -6,23 +6,23 @@
 //minishell
 int main()
 {
-    pid_t ret;
-    int status_shell;
-    int cmd_exec;
-    char common[10];
+    pid_t v_ret;
+    int s_s;
+    int c_e;
+    char c[10];
     printf("Enter your command:");
-    scanf("%s", common);                  
-    ret=fork();
+    scanf("%s", c);                  
+    v_ret=fork();
     //checks if errors are there
-    if(ret<0)
+    if(v_ret<0)
     {
         perror("fork");
         exit(1);
     }
-    if(ret==0)
+    if(v_ret==0)
     {
-        cmd_exec=execlp(common,common,NULL);
-        if(cmd_exec<0)
+        c_e=execlp(c,c,NULL);
+        if(c_e<0)
         {
             perror("execlp");
             exit(2);
@@ -31,8 +31,8 @@ int main()
     }
     else
     {
-        waitpid(-1,&status_shell,0); //wait of (&status_shell);
+        waitpid(-1,&s_s,0); //wait of (&s_s);
         printf("parent--child exit status=%d\n",
-			WEXITSTATUS(status_shell));
+			WEXITSTATUS(s_s));
     }
 }

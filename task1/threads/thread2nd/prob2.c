@@ -6,13 +6,13 @@
 #define max 16 
   
 // total 4 threads 
-#define Th_max 4 
+#define tmax 4 
   
 
 int a[max] = { 2, 6, 8, 13, 17 ,19, 26, 29, 32,566, 57, 72, 108, 152, 172, 200 }; 
   
 // Array to store max of threads 
-int maximum_number[Th_max] = { 0 }; 
+int maximum_number[tmax] = { 0 }; 
 int thread_no = 0; 
   
 // Function to compute maximum number in the array
@@ -34,25 +34,25 @@ int main()
 { 
     int maxi = 0; 
     int i; 
-    pthread_t threads[Th_max]; 
+    pthread_t threads[tmax]; 
   
   
     // creation of all 4 threads
-    for (i = 0; i < Th_max; i++) 
+    for (i = 0; i < tmax; i++) 
         pthread_create(&threads[i], NULL, 
                        maximum, (void*)NULL); 
   
     //combining all 4 threads and waiting for the result
-    for (i = 0; i < Th_max; i++) 
+    for (i = 0; i < tmax; i++) 
         pthread_join(threads[i], NULL); 
   
     // compute the max through individual threads
-    for (i = 0; i < Th_max; i++) { 
+    for (i = 0; i < tmax; i++) { 
         if (maximum_number[i] > maxi) 
             maxi = maximum_number[i]; 
     } 
   
-    printf("Maxi in the element is : %d", maxi); 
+    printf("Maximum in the element is : %d\n", maxi); 
   
     return 0; 
 } 
